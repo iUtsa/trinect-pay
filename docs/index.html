@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pay Trinect LLC</title>
+<meta name="description" content="Pay a Trinect LLC invoice or make a payment securely online. Card payments are processed by Stripe.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap top-in">
+    <span class="brand"><span class="mark" aria-hidden="true">T</span>Trinect LLC</span>
+    <span class="secure"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M12 2a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2h-1V7a5 5 0 0 0-5-5Zm-3 8V7a3 3 0 1 1 6 0v3H9Z"/></svg>Secure payment</span>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <p class="eyebrow">Payments</p>
+    <h1>Pay Trinect LLC</h1>
+    <p class="lead">Pay an invoice or make a payment by card. You choose the amount and enter the details on the next page, which is run by Stripe.</p>
+  </section>
+
+  <div id="notice" class="notice" hidden role="status"></div>
+
+  <section class="options" aria-label="Payment options">
+    <a class="option" id="optInvoice" data-kind="invoice" href="#" aria-disabled="true">
+      <span class="opt-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M6 3h9l4 4v14H6zM14 3v5h5M9 12h7M9 16h7"/></svg></span>
+      <span class="opt-body">
+        <span class="opt-title">Pay an invoice</span>
+        <span class="opt-text">Enter your invoice number and the amount due.</span>
+      </span>
+      <span class="opt-go" aria-hidden="true">→</span>
+    </a>
+    <a class="option" id="optOther" data-kind="other" href="#" aria-disabled="true">
+      <span class="opt-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M3 7h18v10H3zM3 11h18M7 15h3"/></svg></span>
+      <span class="opt-body">
+        <span class="opt-title">Make another payment</span>
+        <span class="opt-text">A deposit, a retainer or anything agreed with us. Tell us what it's for.</span>
+      </span>
+      <span class="opt-go" aria-hidden="true">→</span>
+    </a>
+  </section>
+
+  <section class="facts" aria-label="How it works">
+    <div><h2>Secure</h2><p>Card details go straight to Stripe. Trinect never sees or stores your card number.</p></div>
+    <div><h2>Receipt</h2><p>Stripe emails a receipt to the address you enter as soon as the payment goes through.</p></div>
+    <div><h2>Questions</h2><p>About an invoice or a charge? Email <a href="mailto:support@trinect.org">support@trinect.org</a>.</p></div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">© <span id="year"></span> Trinect LLC · Payments processed by Stripe</div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  // links.json is written by setup/create-links.mjs: the public Stripe Payment Link for each option.
+  // Until it has links, the options stay off and the page says so.
+  fetch('links.json', { cache: 'no-store' }).then((r) => (r.ok ? r.json() : {})).catch(() => ({})).then((links) => {
+    let ready = 0;
+    document.querySelectorAll('.option').forEach((a) => {
+      const url = links[a.dataset.kind];
+      if (typeof url === 'string' && /^https:\/\/(buy|checkout)\.stripe\.com\//.test(url)) {
+        a.href = url;
+        a.removeAttribute('aria-disabled');
+        ready += 1;
+      } else {
+        a.removeAttribute('href');
+      }
+    });
+    if (!ready) {
+      const n = document.getElementById('notice');
+      n.innerHTML = 'Online payments are being set up. To pay now, email <a href="mailto:support@trinect.org">support@trinect.org</a>.';
+      n.hidden = false;
+    }
+  });
+</script>
+</body>
+</html>

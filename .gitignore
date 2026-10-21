@@ -1,0 +1,5 @@
+.env
+*.key
+stripe-key*.txt
+node_modules/
+.DS_Store
