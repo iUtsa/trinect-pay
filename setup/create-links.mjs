@@ -94,10 +94,15 @@ async function existingLinks() {
   }
 }
 
-const account = await stripe('GET', '/v1/account');
-const shownAs = (account.settings && account.settings.dashboard && account.settings.dashboard.display_name)
-  || (account.business_profile && account.business_profile.name) || account.id;
-console.log(`Stripe account: ${shownAs} (${live ? 'LIVE' : 'test'} mode)`);
+// Which account this is, when the key may read it (a restricted key often can't; that's fine)
+try {
+  const account = await stripe('GET', '/v1/account');
+  const shownAs = (account.settings && account.settings.dashboard && account.settings.dashboard.display_name)
+    || (account.business_profile && account.business_profile.name) || account.id;
+  console.log(`Stripe account: ${shownAs} (${live ? 'LIVE' : 'test'} mode)`);
+} catch {
+  console.log(`Stripe account: (this key can't read the account name) (${live ? 'LIVE' : 'test'} mode)`);
+}
 
 const before = await existingLinks();
 const links = {};
