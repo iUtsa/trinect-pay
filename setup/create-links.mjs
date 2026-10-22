@@ -10,7 +10,8 @@
 // made before (by metadata) and updates them instead of making new ones.
 //
 // Options (environment): SITE_URL (where the site lives; the thank-you page is SITE_URL + thanks.html),
-// MIN_USD (default 1), MAX_USD (default 50000), NO_PUSH=1 (write links.json only).
+// MIN_USD (default 1), MAX_USD (default 50000), NO_PUSH=1 (write links.json only), PRINT_ONLY=1 (print
+// the links and write nothing, for running it on the machine that holds the key).
 import { execFileSync } from 'node:child_process';
 import { readFileSync, writeFileSync } from 'node:fs';
 import { createInterface } from 'node:readline';
@@ -128,6 +129,8 @@ for (const [kind, o] of Object.entries(OPTIONS)) {
   console.log(`${kind}: created ${l.url}`);
 }
 
+// Run somewhere else (where the key lives): just print the links, write nothing
+if (process.env.PRINT_ONLY) { console.log(`LINKS ${JSON.stringify(links)}`); process.exit(0); }
 const file = path.join(ROOT, 'docs', 'links.json');
 const old = readFileSync(file, 'utf8');
 const next = `${JSON.stringify(links, null, 2)}\n`;

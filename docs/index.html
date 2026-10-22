@@ -3,59 +3,76 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Pay Trinect LLC</title>
+<title>Pay Trinect</title>
 <meta name="description" content="Pay a Trinect LLC invoice or make a payment securely online. Card payments are processed by Stripe.">
 <meta name="robots" content="noindex">
+<meta name="theme-color" content="#f6f4ef">
+<link rel="icon" href="brand/icon-64.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@500&family=Source+Serif+4:opsz,wght@8..60,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <header class="top">
   <div class="wrap top-in">
-    <span class="brand"><span class="mark" aria-hidden="true">T</span>Trinect LLC</span>
-    <span class="secure"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M12 2a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2h-1V7a5 5 0 0 0-5-5Zm-3 8V7a3 3 0 1 1 6 0v3H9Z"/></svg>Secure payment</span>
+    <a class="brand" href="https://www.trinect.org/"><img src="brand/trinect-mark-96.png" alt="" width="34" height="34">Trinect</a>
+    <div class="top-right">
+      <span class="secure label"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M12 2a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2h-1V7a5 5 0 0 0-5-5Zm-3 8V7a3 3 0 1 1 6 0v3H9Z"/></svg>Secure payments</span>
+      <a class="pill" href="https://www.trinect.org/"><span class="arr" aria-hidden="true">←</span>trinect.org</a>
+    </div>
   </div>
 </header>
 
 <main class="wrap">
   <section class="hero">
-    <p class="eyebrow">Payments</p>
-    <h1>Pay Trinect LLC</h1>
+    <h1>Pay Trinect,<span class="serif">simply and securely.</span></h1>
     <p class="lead">Pay an invoice or make a payment by card. You choose the amount and enter the details on the next page, which is run by Stripe.</p>
   </section>
 
   <div id="notice" class="notice" hidden role="status"></div>
 
   <section class="options" aria-label="Payment options">
-    <a class="option" id="optInvoice" data-kind="invoice" href="#" aria-disabled="true">
-      <span class="opt-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M6 3h9l4 4v14H6zM14 3v5h5M9 12h7M9 16h7"/></svg></span>
-      <span class="opt-body">
-        <span class="opt-title">Pay an invoice</span>
-        <span class="opt-text">Enter your invoice number and the amount due.</span>
-      </span>
-      <span class="opt-go" aria-hidden="true">→</span>
+    <a class="option" id="optInvoice" data-kind="invoice">
+      <span class="label">01 — Invoice</span>
+      <h2>Pay an invoice</h2>
+      <p>Enter your invoice number and the amount due.</p>
+      <span class="pill dark"><span class="arr" aria-hidden="true">→</span>Pay an invoice</span>
     </a>
-    <a class="option" id="optOther" data-kind="other" href="#" aria-disabled="true">
-      <span class="opt-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M3 7h18v10H3zM3 11h18M7 15h3"/></svg></span>
-      <span class="opt-body">
-        <span class="opt-title">Make another payment</span>
-        <span class="opt-text">A deposit, a retainer or anything agreed with us. Tell us what it's for.</span>
-      </span>
-      <span class="opt-go" aria-hidden="true">→</span>
+    <a class="option" id="optOther" data-kind="other">
+      <span class="label">02 — Other</span>
+      <h2>Make another payment</h2>
+      <p>A deposit, a retainer or anything agreed with us. Tell us what it's for.</p>
+      <span class="pill"><span class="arr" aria-hidden="true">→</span>Make a payment</span>
     </a>
   </section>
 
-  <section class="facts" aria-label="How it works">
-    <div><h2>Secure</h2><p>Card details go straight to Stripe. Trinect never sees or stores your card number.</p></div>
-    <div><h2>Receipt</h2><p>Stripe emails a receipt to the address you enter as soon as the payment goes through.</p></div>
-    <div><h2>Questions</h2><p>About an invoice or a charge? Email <a href="mailto:support@trinect.org">support@trinect.org</a>.</p></div>
+  <section class="panel" aria-label="How payments work">
+    <h2><b>Paid in a minute.</b> Kept private.</h2>
+    <div class="facts">
+      <div><span class="label">Secure</span><h3>Your card stays with Stripe</h3><p>Card details go straight to Stripe. Trinect never sees or stores your card number.</p></div>
+      <div><span class="label">Receipt</span><h3>Emailed at once</h3><p>Stripe emails a receipt to the address you enter as soon as the payment goes through.</p></div>
+      <div><span class="label">Questions</span><h3>We're here</h3><p>About an invoice or a charge? Email <a href="mailto:support@trinect.org">support@trinect.org</a>.</p></div>
+    </div>
   </section>
 </main>
 
 <footer class="foot">
-  <div class="wrap">© <span id="year"></span> Trinect LLC · Payments processed by Stripe</div>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="https://www.trinect.org/"><img src="brand/trinect-mark-96.png" alt="" width="34" height="34">Trinect</a>
+        <p class="tag">Software that brings people together.</p>
+      </div>
+      <div><span class="label">Explore</span>
+        <ul><li><a href="https://www.trinect.org/">Home</a></li><li><a href="https://www.trinect.org/products">Products</a></li>
+          <li><a href="https://www.trinect.org/solutions">Solutions</a></li><li><a href="https://www.trinect.org/about">About</a></li></ul></div>
+      <div><span class="label">Legal</span>
+        <ul><li><a href="https://www.trinect.org/policies">Policies</a></li><li><a href="https://www.trinect.org/privacy">Privacy</a></li>
+          <li><a href="https://www.trinect.org/terms">Terms</a></li></ul></div>
+    </div>
+    <div class="foot-bottom"><span>© <span id="year"></span> Trinect LLC, New Jersey, United States.</span><span>Payments processed by Stripe.</span></div>
+  </div>
 </footer>
 
 <script>
@@ -68,10 +85,10 @@
       const url = links[a.dataset.kind];
       if (typeof url === 'string' && /^https:\/\/(buy|checkout)\.stripe\.com\//.test(url)) {
         a.href = url;
-        a.removeAttribute('aria-disabled');
         ready += 1;
       } else {
         a.removeAttribute('href');
+        a.setAttribute('aria-disabled', 'true');
       }
     });
     if (!ready) {
